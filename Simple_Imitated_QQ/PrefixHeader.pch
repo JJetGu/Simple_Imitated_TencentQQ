@@ -1,0 +1,57 @@
+//
+//  PrefixHeader.pch
+//  Simple_Imitated_QQ
+//
+//  Created by JJetGu on 15-6-30.
+//  Copyright (c) 2015年 Free. All rights reserved.
+//
+
+#ifndef Simple_Imitated_QQ_PrefixHeader_pch
+#define Simple_Imitated_QQ_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "AppDelegate.h"
+
+#import "UIView_Extension.h"
+#import "UIImage+Extention.h"
+#import "UIBarButtonItem+Extension.h"
+
+#import "JGUserDefaults.h"
+#import "JGCommonUtil.h"
+
+#import "UIColor+Category.h"
+#import "NSString+Extension.h"
+
+#ifdef DEBUG // 处于开发阶段
+#define JGLog(...) NSLog(__VA_ARGS__)
+#else // 处于发布阶段
+#define JGLog(...)
+#endif
+
+// 1.判断是否为iOS7
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+#define iOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+
+// 2.获得RGB颜色
+#define IWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+//通知
+#define JGNotificationCenter [NSNotificationCenter defaultCenter]
+#define JGAddObsver(methodName, noteName) [JGNotificationCenter addObserver:self selector:@selector(methodName) name:noteName object:nil];
+#define JGRemoveObsver [JGNotificationCenter removeObserver:self];
+
+//更改主题
+#define CHANGEAPPTHEME @"changeAppTheme"
+
+//聊天信息字体的大小
+#define bBtnFont [UIFont systemFontOfSize:15.0f]
+#define headerViewFont [UIFont systemFontOfSize:14.0f]
+#endif
